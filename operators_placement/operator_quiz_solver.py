@@ -17,10 +17,8 @@ def recursive_function(numero, somma, lista_sommati=[]):
     list_added_negative.append(string_negative)
     if num == 10:
         if sum_positive == 0:
-            #print(list_added_positive)
             ok_combinations.append(list_added_positive)
         if sum_negative == 0:
-            #print(list_added_negative)
             ok_combinations.append(list_added_negative)
     else:
         recursive_function(num, sum_positive, list_added_positive)
