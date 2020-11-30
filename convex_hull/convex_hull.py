@@ -1,3 +1,10 @@
+"""
+Convex Hull calculator
+
+This code is partially authored by Yueh-Lin Tsou. His last update happened the 2019/7/20
+E-mail: hank630280888@gmail.com
+"""
+
 import math
 
 
@@ -30,7 +37,7 @@ def judge(p1, p2, p3):
     return (p2[0] - p3[0]) * (p1[1] - p3[1]) - (p2[1] - p3[1]) * (p1[0] - p3[0])
 
 
-def MergeSort(points, result, begin, end):
+def merge_sort(points, result, begin, end):
     """ Merge sort algorithm based on theta and their distance
 
     :param points: list of points to be sorted
@@ -46,8 +53,8 @@ def MergeSort(points, result, begin, end):
     begin_1, end_1 = begin, mid
     begin_2, end_2 = mid + 1, end
 
-    MergeSort(points, result, begin_1, end_1)
-    MergeSort(points, result, begin_2, end_2)
+    merge_sort(points, result, begin_1, end_1)
+    merge_sort(points, result, begin_2, end_2)
 
     k = begin
     while begin_1 <= end_1 and begin_2 <= end_2:
@@ -105,7 +112,7 @@ def graham_scan(points):
 
     # sort the points by theta and distance
     result = len(points) * [None]
-    MergeSort(points, result, 0, len(points) - 1)
+    merge_sort(points, result, 0, len(points) - 1)
 
     # Graham's Scan Algorithm
     hull = [start, points[0]]
